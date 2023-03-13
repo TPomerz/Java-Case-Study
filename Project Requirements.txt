@@ -1,0 +1,9 @@
+signup
+signin
+home page of user with product info
+
+choose product and order
+
+order confirmation message
+
+test angular with karma
