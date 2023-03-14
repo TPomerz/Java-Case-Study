@@ -1,46 +1,23 @@
-package com.ecommerce.model;
+package com.ecommerce.dto;
 
-import jakarta.persistence.*;
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+public class EcommerceRegisterRequest {
 
-@Table(name = "users")
-public class EcommerceUser {
-
-    @Id
-    @Column(name = "user_id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
     private String email;
     private String password;
     private String firstName;
     private String lastName;
+
     private String country;
 
-
-    public EcommerceUser() {
+    public EcommerceRegisterRequest() {
     }
 
-    public EcommerceUser(int id, String email, String password, String firstName, String lastName, String country) {
-        this.id = id;
+    public EcommerceRegisterRequest(String email, String password, String firstName, String lastName, String country) {
         this.email = email;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
         this.country = country;
-    }
-
-    public EcommerceUser(String email, String password) {
-        this.email = email;
-        this.password = password;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getEmail() {
@@ -79,19 +56,18 @@ public class EcommerceUser {
         return country;
     }
 
-    public void setCountry(String country) {
-        this.country = country;
+    public void setCountry(String getCountry) {
+        this.country = getCountry;
     }
 
     @Override
     public String toString() {
-        return "EcommerceUser{" +
-                "id=" + id +
-                ", email='" + email + '\'' +
+        return "EcommerceRegisterRequest{" +
+                "email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", country='" + country + '\'' +
+                ", getCountry='" + country + '\'' +
                 '}';
     }
 }
