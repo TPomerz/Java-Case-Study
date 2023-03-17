@@ -1,9 +1,13 @@
 package com.ecommerce.model;
 
 import jakarta.persistence.*;
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import java.util.List;
 
+/**
+ * User model for the Database
+ */
+@Entity
 @Table(name = "users")
 public class EcommerceUser {
 
@@ -17,8 +21,23 @@ public class EcommerceUser {
     private String lastName;
     private String country;
 
+    @OneToMany(mappedBy = "user")
+    @JsonManagedReference(value = "cart_user")
+    List<EcommerceCart> cart;
 
     public EcommerceUser() {
+    }
+
+    public EcommerceUser(int id) {
+        this.id = id;
+    }
+
+    public EcommerceUser(String email, String password, String firstName, String lastName, String country) {
+        this.email = email;
+        this.password = password;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.country = country;
     }
 
     public EcommerceUser(int id, String email, String password, String firstName, String lastName, String country) {
